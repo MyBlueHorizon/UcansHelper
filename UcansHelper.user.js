@@ -13,8 +13,7 @@
 (function() {
     'use strict';
     setInterval(clickBtn, 3000)
-    console.info("脚本已启用，于"+ mytime)
-    // Your code here...
+    console.info("脚本已启用")
 })();
 
 function clickBtn() {
