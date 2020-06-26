@@ -13,6 +13,7 @@
 (function() {
     'use strict';
     setInterval(clickBtn, 3000)
+    console.info("脚本已启用，于"+ mytime)
     // Your code here...
 })();
 
@@ -21,11 +22,11 @@ function clickBtn() {
     let btn_elements = document.getElementsByClassName("st_Roll");
     var getcheck = document.getElementsByClassName("st_Roll").rollDiv.children;
     var myDate = new Date();
-    var mytime=myDate.toLocaleTimeString();
+    var mytime = myDate.toLocaleTimeString();
     try {
         if (btn_elements.rollDiv.style.display == "" || btn_elements.rollDiv.style.display =="block") {
-            console.info("签到已成功，于"+ mytime)
             getcheck[1].click()
+            console.info("签到已成功，于"+ mytime)
         }
     } catch(err) {
         console.error(`脚本错误:${err}`)
