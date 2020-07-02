@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         友看课堂小助手
 // @namespace    UcansHelper
-// @version      1.1.0
+// @version      1.1.1
 // @description  [非官方] 云课堂自动签到等辅助功能及优化。
 // @author       MyBlueHorizon
 // @supportURL   https://github.com/MyBlueHorizon/UcansHelper/issues
@@ -19,6 +19,7 @@
     setInterval(clickBtn, 3000)
     console.info("脚本已启用")
     console.warn("请合理使用，脚本造成的一切后果概不负责")
+    notifyMe("脚本已启用","请合理使用，脚本造成的一切后果概不负责")
 })();
 
 function clickBtn() {
