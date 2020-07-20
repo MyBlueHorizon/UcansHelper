@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         友看课堂小助手
 // @namespace    UcansHelper
-// @version      1.2.6
+// @version      1.2.8
 // @description  [非官方] 云课堂自动签到等辅助功能及优化。
 // @author       MyBlueHorizon
 // @supportURL   https://github.com/MyBlueHorizon/UcansHelper/issues
