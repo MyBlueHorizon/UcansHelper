@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         友看课堂小助手
 // @namespace    UcansHelper
-// @version      1.2.3
+// @version      1.2.4
 // @description  [非官方] 云课堂自动签到等辅助功能及优化。
 // @author       MyBlueHorizon
 // @supportURL   https://github.com/MyBlueHorizon/UcansHelper/issues
@@ -30,12 +30,12 @@ var nowurl = window.location.pathname;
         document.getElementsByClassName("c-top-con clearfix")[0].style.width ="auto"
         document.getElementsByClassName("c-main")[0].style.width ="auto"
         document.getElementsByClassName("c-top")[0].style.background ="#2ca9e1"
-        document.getElementById("Today_course").style.color ="#028760"
-        document.getElementById("Today_course").style.borderBottomColor ="#028760"
-        document.getElementById("course_set").style.color ="#3eb370"
-        document.getElementById("course_set").style.borderBottomColor ="#3eb370"
-        document.getElementById("old_course").style.color ="#3eb370"
-        document.getElementById("old_course").style.borderBottomColor ="#3eb370"
+        document.getElementById("Today_course").style.color ="#000"
+        document.getElementById("Today_course").style.borderBottomColor ="#007bbb"
+        document.getElementById("course_set").style.color ="#000"
+        document.getElementById("course_set").style.borderBottomColor ="#007bbb"
+        document.getElementById("old_course").style.color ="#000"
+        document.getElementById("old_course").style.borderBottomColor ="#007bbb"
     }
 })();
 
