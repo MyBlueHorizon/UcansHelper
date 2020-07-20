@@ -21,11 +21,11 @@
         setInterval(ClickBtn, 3000)
         console.info("脚本已启用")
         console.warn("请合理使用，脚本造成的一切后果概不负责")
-        notifyMe("脚本已启用","请合理使用，脚本造成的一切后果概不负责")
+        NotifyMe("脚本已启用","请合理使用，脚本造成的一切后果概不负责")
     }
     if (NowUrl == "/chatRoom/Course_page.html"){
         console.info("脚本已启用")
-        notifyMe("听课时间",localStorage.getItem("localStudyingTimeLive"))
+        NotifyMe("听课时间",localStorage.getItem("localStudyingTimeLive"))
         ChangeCoursePage()
     }
 })();
@@ -51,7 +51,7 @@ function ClickBtn() {
         if (st_elements.rollDiv.style.display == "" || st_elements.rollDiv.style.display =="block") {
             btn_elements[1].click()
             console.info("已执行签到操作，于"+ mytime)
-            notifyMe("操作成功","已执行签到操作，于"+ mytime)
+            NotifyMe("操作成功","已执行签到操作，于"+ mytime)
         }
     } catch(err) {
         console.error(`脚本错误:${err}`)
