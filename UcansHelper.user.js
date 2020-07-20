@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         友看课堂小助手
 // @namespace    UcansHelper
-// @version      1.2.2
+// @version      1.2.3
 // @description  [非官方] 云课堂自动签到等辅助功能及优化。
 // @author       MyBlueHorizon
 // @supportURL   https://github.com/MyBlueHorizon/UcansHelper/issues
-// @match        *://www.ucans.net/chatRoom/video_live.html*
+// @match        *://www.ucans.net/chatRoom/*
 // @grant        none
 // @icon         https://www.ucans.net/chatRoom/favicon.ico
 // @license      MIT License
@@ -34,8 +34,8 @@ var nowurl = window.location.pathname;
         document.getElementById("Today_course").style.borderBottomColor ="#028760"
         document.getElementById("course_set").style.color ="#3eb370"
         document.getElementById("course_set").style.borderBottomColor ="#3eb370"
-        document.getElementById("old_course").style.color ="#aacf53"
-        document.getElementById("old_course").style.borderBottomColor ="#aacf53"
+        document.getElementById("old_course").style.color ="#3eb370"
+        document.getElementById("old_course").style.borderBottomColor ="#3eb370"
     }
 })();
 
