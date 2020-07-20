@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         友看课堂小助手
 // @namespace    UcansHelper
-// @version      1.2.4
+// @version      1.2.6
 // @description  [非官方] 云课堂自动签到等辅助功能及优化。
 // @author       MyBlueHorizon
 // @supportURL   https://github.com/MyBlueHorizon/UcansHelper/issues
@@ -11,37 +11,39 @@
 // @license      MIT License
 // ==/UserScript==
 
-var nowurl = window.location.pathname;
-
 (function() {
     'use strict';
+    var NowUrl = window.location.pathname;
     if (!("Notification" in window)) {
         alert("浏览器不支持桌面通知，部分功能无法使用，请更新浏览器");
     }
-    if (nowurl == "/chatRoom/video_live.html"){
-        setInterval(clickBtn, 3000)
+    if (NowUrl == "/chatRoom/video_live.html"){
+        setInterval(ClickBtn, 3000)
         console.info("脚本已启用")
         console.warn("请合理使用，脚本造成的一切后果概不负责")
         notifyMe("脚本已启用","请合理使用，脚本造成的一切后果概不负责")
     }
-    if (nowurl == "/chatRoom/Course_page.html"){
+    if (NowUrl == "/chatRoom/Course_page.html"){
         console.info("脚本已启用")
         notifyMe("听课时间",localStorage.getItem("localStudyingTimeLive"))
-        document.getElementsByClassName("c-top-con clearfix")[0].style.width ="auto"
-        document.getElementsByClassName("c-main")[0].style.width ="auto"
-        document.getElementsByClassName("c-top")[0].style.background ="#2ca9e1"
-        document.getElementById("Today_course").style.color ="#000"
-        document.getElementById("Today_course").style.borderBottomColor ="#007bbb"
-        document.getElementById("course_set").style.color ="#000"
-        document.getElementById("course_set").style.borderBottomColor ="#007bbb"
-        document.getElementById("old_course").style.color ="#000"
-        document.getElementById("old_course").style.borderBottomColor ="#007bbb"
+        ChangeCoursePage()
     }
 })();
 
-function clickBtn() {
-    'use strict';
-    let st_elements = document.getElementsByClassName("st_Roll");
+function ChangeCoursePage(){
+    document.getElementsByClassName("c-top-con clearfix")[0].style.width ="auto"
+    document.getElementsByClassName("c-main")[0].style.width ="auto"
+    document.getElementsByClassName("c-top")[0].style.background ="#2ca9e1"
+    document.getElementById("Today_course").style.color ="#000"
+    document.getElementById("Today_course").style.borderBottomColor ="#2ca9e1"
+    document.getElementById("course_set").style.color ="#000"
+    document.getElementById("course_set").style.borderBottomColor ="#2ca9e1"
+    document.getElementById("old_course").style.color ="#000"
+    document.getElementById("old_course").style.borderBottomColor ="#2ca9e1"
+}
+
+function ClickBtn() {
+    var st_elements = document.getElementsByClassName("st_Roll");
     var btn_elements = document.getElementsByClassName("st_Roll").rollDiv.children;
     var myDate = new Date();
     var mytime = myDate.toLocaleTimeString();
@@ -53,12 +55,11 @@ function clickBtn() {
         }
     } catch(err) {
         console.error(`脚本错误:${err}`)
-        notifyMe("操作失败","脚本出错了，于"+ mytime)
+        NotifyMe("操作失败","脚本出错了，于"+ mytime)
     }
 }
 
-
-function notifyMe(title,massgae) {
+function NotifyMe(title,massgae) {
     if (Notification.permission === "granted") {
         var notification = new Notification(title, {
             body: massgae,
