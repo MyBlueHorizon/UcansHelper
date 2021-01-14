@@ -1,11 +1,11 @@
 # UcansHelper
-1.	本脚本为解决全屏模式下无法显示签到，签到不明显等听课不便而编写，请勿用于其他用途。
-2.	本脚本禁止用来逃课，违反者需自负责任。
-3.	本脚本出现问题造成的损失，编写者概不负责。
-4.	对该脚本的分发与修改需遵循 MIT 协议，严禁用于商业用途。
-5.	确保你已阅读并接受注意事项的要求
-6.	确保你已安装脚本管理器，如Tampermonkey（部分浏览器并不支持，请使用符合相关标准的浏览器，如 Firefox）
-7.	打开脚本管理器，导入该脚本
-8.  在课程页面开启脚本 
-9.  备注：本脚本基于最新版 Firefox 与 Tampermonkey 开发，不保证与其他环境的兼容（Android 等移动平台需开启浏览器的请求桌面版网站）
-
+<img src="https://img.shields.io/badge/Ucans- 2021/1/14 适配-blue.svg?style=for-the-badge"/> <br>
+<img src="https://img.shields.io/badge/Tampermonkey v4.11.6120-兼容-birghtgreen.svg?style=flat-square" />
+<img src="https://img.shields.io/badge/Firefox 84-兼容-birghtgreen.svg?style=flat-square" />
+<img src="https://img.shields.io/badge/Chromium 87-兼容-birghtgreen.svg?style=flat-square" />
+### 当前功能
+1. 自动签到  
+　　本功能为解决全屏无法显示签到设计，请勿滥用。
+2. 查看上课时间
+3. 优化课程页面
+4. 评论区消息弹幕显示
