@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         友看课堂小助手
 // @namespace    UcansHelper
-// @version      1.3.2
+// @version      1.3.3
 // @description  [非官方] 云课堂自动签到等辅助功能及优化。
 // @author       MyBlueHorizon
 // @supportURL   https://github.com/MyBlueHorizon/UcansHelper/issues
 // @match        *://www.ucans.net/chatRoom/*
-// @grant        none
+// @grant        GM_getValue
+// @grant        GM_setValue
 // @icon         https://www.ucans.net/chatRoom/favicon.ico
 // @license      MIT License
 // ==/UserScript==
@@ -20,18 +21,70 @@ var InitInterval
         alert("浏览器不支持桌面通知，部分功能无法使用，请更新浏览器");
     }
     if (NowUrl == "/chatRoom/video_live.html"){
-        setInterval(ClickBtn, 3000)
+        if(GM_getValue("AutoCheckRoll", true)==true){
+            setInterval(ClickBtn, 3000)
+        }
+        if(GM_getValue("ShowClassTime", true)==true){
         InitInterval=setInterval(readyinit,1000)
+        }
         console.info("脚本已启用")
         console.warn("请合理使用，脚本造成的一切后果概不负责")
         NotifyMe("脚本已启用","请合理使用，脚本造成的一切后果概不负责")
     }
     if (NowUrl == "/chatRoom/Course_page.html"){
         console.info("脚本已启用")
+        if(GM_getValue("ShowClassTime", true)==true){
         NotifyMe("听课时间",localStorage.getItem("localStudyingTimeLive"))
+        }
         ChangeCoursePage()
+        let settingButton = document.getElementById('settingButton');
+        settingButton.onclick = showSettingBox;
+        document.getElementById("autoCheckRoll").checked=GM_getValue("AutoCheckRoll", true)
+        let autoCheckRoll = document.getElementById('autoCheckRoll');
+        autoCheckRoll.onclick = setAutoCheckRoll;
+        document.getElementById("showClassTime").checked=GM_getValue("ShowClassTime", true)
+        let showClassTime = document.getElementById('showClassTime');
+        showClassTime.onclick = setShowClassTime;
+        let reWriteClassPage = document.getElementById('reWriteClassPage');
+        reWriteClassPage.disabled=true
+        reWriteClassPage.checked=true
+        document.getElementById("danmakuDiscuss").checked=GM_getValue("DanmakuDiscuss", true)
+        let danmakuDiscuss = document.getElementById('danmakuDiscuss');
+        danmakuDiscuss.onclick = setDanmakuDiscuss;
     }
 })();
+function setAutoCheckRoll(e) {
+    if (document.getElementById("autoCheckRoll").checked==true){
+        GM_setValue("AutoCheckRoll", true)
+    }
+    else {
+        GM_setValue("AutoCheckRoll", false)
+    }
+  }
+function setShowClassTime(e) {
+    if (document.getElementById("showClassTime").checked==true){
+        GM_setValue("ShowClassTime", true)
+    }
+    else {
+        GM_setValue("ShowClassTime", false)
+    }
+  }
+function setDanmakuDiscuss(e) {
+    if (document.getElementById("danmakuDiscuss").checked==true){
+        GM_setValue("DanmakuDiscuss", true)
+    }
+    else {
+        GM_setValue("DanmakuDiscuss", false)
+    }
+  }
+function showSettingBox(e) {
+    if (document.getElementById("setting-box").style.display=="block"){
+        document.getElementById("setting-box").style.display="none"
+    }
+    else {
+        document.getElementById("setting-box").style.display="block"
+    }
+}
 
 function readyinit(){
     if (document.getElementsByClassName("vcp-player vcp-playing").length>0) {
@@ -170,6 +223,15 @@ function ChangeCoursePage(){
     settingButton.style="color: rgb(22, 97, 171);float: right;margin-right: 47px;"
     settingButton.innerHTML="脚本设置";
     topBar[0].appendChild(settingButton);
+    var setstyle=document.createElement("style");
+    setstyle.type="text/css"
+    setstyle.innerHTML=".checke{float:right;position:relative;-webkit-appearance:none;width:40px;height:20px;line-height:20px;background:#eee;border-radius:10px;outline:none;border:2px solid #999}.checke:before{position:absolute;left:0;content:'';width:12px;height:12px;border-radius:50%;background:#eee;box-shadow:0 0 5px #ddd;transition:all .2s linear;border:2px solid #999}.checke:checked{background:#01a1d6}.checke:checked:before{left:20px;transition:all .2s linear}"
+    document.getElementsByTagName('head')[0].appendChild(setstyle);
+    var settingbox=document.createElement("div");
+    settingbox.id="setting-box"
+    settingbox.style="display: none;margin-left: 47px;margin-right: 47px;font-size: 24px;margin-bottom: 47px;background: #f8f8f8;height: 214px;"
+    settingbox.innerHTML='<li style="margin-left: 24px;padding-top: 8px;">友看课堂小助手 设置</li><div style="padding : 8px 48px 0px 48px;clear : both;background: #f8f8f8; height: 24px;"><span style="float : left;display : inline-block;color : rgb(0,0,0);font-size: 18px;">自动签到</span><input type="checkbox" class="checke" id="autoCheckRoll"></div><div style="padding : 8px 48px 0px 48px;clear : both;background: #f8f8f8; height: 24px;"><span style="float : left;display : inline-block;color : rgb(0,0,0);font-size: 18px;">显示上课时间</span><input id="showClassTime" type="checkbox" class="checke"></div><div style="padding : 8px 48px 0px 48px;clear : both;background: #f8f8f8; height: 24px;"><span style="float : left;display : inline-block;color : rgb(0,0,0);font-size: 18px;">优化课程页面 [锁定]</span><input id="reWriteClassPage" type="checkbox" class="checke"></div><div style="padding : 8px 48px 0px 48px;clear : both;background: #f8f8f8; height: 24px;"><span style="float : left;display : inline-block;color : rgb(0,0,0);font-size: 18px;">评论区消息弹幕显示</span><input id="danmakuDiscuss" type="checkbox" class="checke"></div>'
+    document.getElementsByClassName("c-main")[0].insertBefore(settingbox,document.getElementById("c-main-box1"));
 }
 
 function ClickBtn() {
