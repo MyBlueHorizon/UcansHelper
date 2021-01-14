@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         友看课堂小助手
 // @namespace    UcansHelper
-// @version      1.3.0
+// @version      1.3.2
 // @description  [非官方] 云课堂自动签到等辅助功能及优化。
 // @author       MyBlueHorizon
 // @supportURL   https://github.com/MyBlueHorizon/UcansHelper/issues
@@ -42,6 +42,8 @@ function readyinit(){
         damakustyle.innerHTML="#wrapper{position:absolute;pointer-events:none;overflow:hidden;color:#FFFFFF;font-size:28px;text-shadow:2px 2px #000;left:0px;top:0px}.right{position:absolute;visibility:hidden;white-space:nowrap;transform:translateX(700px)}.left{position:absolute;white-space:nowrap;user-select:none;transition:transform 7s linear}"
         document.getElementsByTagName('head')[0].appendChild(damakustyle);
         damakuwrapper.setAttribute('id','wrapper')
+        var blakeheight=document.documentElement.clientHeight-(document.getElementsByClassName("vcp-bigplay")[0].style.height-48)
+        damakuwrapper.style.top=blakeheight
         damakuwrapper.style.width=playerel[0].style.width
         damakuwrapper.style.height=playerel[0].style.height
         playerel[0].appendChild(damakuwrapper)
@@ -155,13 +157,19 @@ function AddNewMsg(){
 function ChangeCoursePage(){
     document.getElementsByClassName("c-top-con clearfix")[0].style.width ="auto"
     document.getElementsByClassName("c-main")[0].style.width ="auto"
-    document.getElementsByClassName("c-top")[0].style.background ="#2ca9e1"
-    document.getElementById("Today_course").style.color ="#000"
-    document.getElementById("Today_course").style.borderBottomColor ="#2ca9e1"
-    document.getElementById("course_set").style.color ="#000"
-    document.getElementById("course_set").style.borderBottomColor ="#2ca9e1"
-    document.getElementById("old_course").style.color ="#000"
-    document.getElementById("old_course").style.borderBottomColor ="#2ca9e1"
+    document.getElementsByClassName("c-top")[0].style.background ="#1BA784"
+    document.getElementById("Today_course").style.color ="#1661ab"
+    document.getElementById("Today_course").style.borderBottomColor ="#1BA784"
+    document.getElementById("course_set").style.color ="#1661ab"
+    document.getElementById("course_set").style.borderBottomColor ="#1BA784"
+    document.getElementById("old_course").style.color ="#1661ab"
+    document.getElementById("old_course").style.borderBottomColor ="#1BA784"
+    var settingButton=document.createElement("li");
+    var topBar=document.getElementsByClassName("c-main-btn clearfix")
+    settingButton.id="settingButton"
+    settingButton.style="color: rgb(22, 97, 171);float: right;margin-right: 47px;"
+    settingButton.innerHTML="脚本设置";
+    topBar[0].appendChild(settingButton);
 }
 
 function ClickBtn() {
