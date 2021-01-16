@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         友看课堂小助手
 // @namespace    UcansHelper
-// @version      1.3.3
+// @version      1.3.4
 // @description  [非官方] 云课堂自动签到等辅助功能及优化。
 // @author       MyBlueHorizon
 // @supportURL   https://github.com/MyBlueHorizon/UcansHelper/issues
@@ -24,7 +24,7 @@ var InitInterval
         if(GM_getValue("AutoCheckRoll", true)==true){
             setInterval(ClickBtn, 3000)
         }
-        if(GM_getValue("ShowClassTime", true)==true){
+        if(GM_getValue("DanmakuDiscuss", true)==true){
         InitInterval=setInterval(readyinit,1000)
         }
         console.info("脚本已启用")
