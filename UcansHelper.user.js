@@ -29,7 +29,7 @@ var danmakuInitInterval
     //判断浏览器是否支持通知 API
     if (!("Notification" in window)) {
 
-        toastr.warn("浏览器不支持桌面通知，部分功能无法使用，请更新浏览器")
+        toastr.warning("浏览器不支持桌面通知，部分功能无法使用，请更新浏览器")
 
     }
 
