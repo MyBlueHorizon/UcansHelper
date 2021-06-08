@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         友看课堂小助手
 // @namespace    UcansHelper
-// @version      1.4.1
+// @version      1.4.2
 // @description  [非官方] 云课堂自动签到等辅助功能及优化。
 // @author       MyBlueHorizon
 // @supportURL   https://github.com/MyBlueHorizon/UcansHelper/issues
@@ -39,20 +39,24 @@ var danmakuInitInterval
     //直播页面
     if (nowUrl == "/chatRoom/video_live.html"){
 
+        toastr.info("脚本已启用")
+        toastr.warning("请合理使用，脚本造成的一切后果概不负责!","免责声明")
+
+        
         //判断是否开启签到
         if(GM_getValue("isAutoCheckRoll", true)==true){
             setInterval(ClickBtn, 3000)
+            toastr.info("签到模块已启用")
         }
 
         //判断消息是否弹幕化
         if(GM_getValue("isDanmakuDiscuss", true)==true){
+            toastr.info("弹幕模块已启用")
             danmakuInitInterval=setInterval(readyDanmakuInit,1000)
         }
 
         console.info("UcansHelper 载入成功")
-        toastr.info("脚本已启用")
-        toastr.warning("请合理使用，脚本造成的一切后果概不负责!","免责声明")
-
+        
     }
 
     //课程页面
@@ -128,9 +132,11 @@ function setAutoCheckRoll(e) {
 
     if (document.getElementById("autoCheckRoll").checked==true){
         GM_setValue("isAutoCheckRoll", true)
+        toastr.success("自动签到已启用")
     }
     else {
         GM_setValue("isAutoCheckRoll", false)
+        toastr.success("自动签到已禁用")
     }
 
 }
@@ -140,9 +146,11 @@ function setShowClassTime(e) {
 
     if (document.getElementById("showClassTime").checked==true){
         GM_setValue("isShowClassTime", true)
+        toastr.success("时间显示已启用")
     }
     else {
         GM_setValue("isShowClassTime", false)
+        toastr.success("时间显示已禁用")
     }
 
 }
@@ -152,9 +160,11 @@ function setDanmakuDiscuss(e) {
 
     if (document.getElementById("danmakuDiscuss").checked==true){
         GM_setValue("isDanmakuDiscuss", true)
+        toastr.success("弹幕讨论已启用")
     }
     else {
         GM_setValue("isDanmakuDiscuss", false)
+        toastr.success("弹幕讨论已禁用")
     }
 
 }
@@ -194,7 +204,7 @@ function readyDanmakuInit(){
         //添加消息监听，完成初始化
         setInterval(addNewMsg, 1000)
         clearInterval(danmakuInitInterval)
-
+        toastr.success("弹幕模块初始化成功")
     }
 
 }
