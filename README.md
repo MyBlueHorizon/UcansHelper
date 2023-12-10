@@ -3,6 +3,8 @@
 <img src="https://img.shields.io/badge/Tampermonkey v4.18.1-兼容-birghtgreen.svg?style=flat-square" />
 <img src="https://img.shields.io/badge/Firefox 108-兼容-birghtgreen.svg?style=flat-square" />
 <img src="https://img.shields.io/badge/Chromium 108-兼容-birghtgreen.svg?style=flat-square" />
+### 不再维护
+本脚本已不再维护，旧有功能不保证长期可用，请谨慎选用。
 ### 兼容性警告
 为避免出现漏洞，请尽量使用最新版浏览器和 Tampermonkey 使用。
 ### 当前功能
